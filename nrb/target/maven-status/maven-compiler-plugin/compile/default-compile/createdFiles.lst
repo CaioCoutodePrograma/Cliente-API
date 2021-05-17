@@ -1,0 +1,4 @@
+infor\api\sp\nrb\documentation\DocumentationSwagger.class
+infor\api\sp\nrb\controller\ClienteController.class
+infor\api\sp\nrb\InforApiApplication.class
+infor\api\sp\nrb\models\Cliente.class
