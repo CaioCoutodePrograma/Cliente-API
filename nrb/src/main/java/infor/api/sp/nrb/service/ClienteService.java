@@ -12,7 +12,7 @@ import java.util.Optional;
 public class ClienteService {
 
     @Autowired
-    private ClienteRepository clienteRepository;
+    public ClienteRepository clienteRepository;
 
 
 
@@ -22,8 +22,17 @@ public class ClienteService {
         System.out.print(this.clienteRepository);
         return clienteObj.orElse(null);
     }
-    public void  add(List<Cliente> clientes){
-        clienteRepository.saveAll(clientes);
+
+    public List<Cliente>  add(List<Cliente> clientes){
+       return clienteRepository.saveAll(clientes);
+    }
+
+    public List<Cliente> todosClientes(){
+        return  clienteRepository.findAll();
+    }
+
+    public Cliente addCliente(Cliente cliente){
+       return clienteRepository.save(cliente);
     }
 
 }

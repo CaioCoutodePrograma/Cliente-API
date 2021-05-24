@@ -39,7 +39,7 @@ public class DocumentationSwagger {
 
     }
 
-    @GetMapping("documentation")
+
     @Produces({MediaType.APPLICATION_JSON+"; charset=UTF-8"})
     public Response getJsonSwagger() throws JsonProcessingException, UnknownHostException, NoSuchAlgorithmException, UnsupportedEncodingException{
         Swagger swagger = new Reader(new Swagger()).read(getClasses());
