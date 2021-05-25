@@ -1,11 +1,122 @@
-title: NRB API
-description: Primeira Tentativa de API.
-termsOfService: http://swagger.io/terms/
-contact:
-  name: API Support
-  url: http://www.swagger.io/support
-  email: support@swagger.io
-license:
-  name: Apache 2.0
-  url: http://www.apache.org/licenses/LICENSE-2.0.html
-version: 1.0.1
+swagger: "2.0"
+info:
+  title: NRB API
+  description: Primeira Tentativa de API.
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: API Support
+    url: http://www.swagger.io/support
+    email: support@swagger.io
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  version: 1.0.1
+host: "localhost:8080"
+basePath: "/api"
+tags:
+- name: "Cliente"
+  description: "Tudo Sobre o Cliente"
+schemes:
+- "https"
+- "http"
+paths:
+  /cliente/{id}:
+    get:
+      tags:
+      - "cliente"
+      summary: "Localiza cliente pelo ID "
+      description: ""
+      operationId: "getByID"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID do Cliente para retornar"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Operação bem sucedida"
+        "400":
+          description: "ID inválido"
+        "404":
+          description: "Cliente não encontrado"
+  /clientes:
+    get:
+      tags:
+      - "cliente"
+      summary: "Adiciona dois Clientes e os retorna"
+      description: "Serve só para inicializar o banco "
+      operationId: "retornaClientes"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "Operação bem sucedida"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "integer"
+              format: "int32"
+  /listaclientes:
+    get:
+      tags:
+      - "cliente"
+      summary: "Lista todos os Clientes"
+      description: ""
+      operationId: "retornatodosClientes"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "Operação bem sucedida"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "integer"
+              format: "int32"
+        "404":
+          description: "Clientes não encontrados"
+  /cliente/add/{id}:
+    post:
+      tags:
+      - "cliente"
+      summary: "Adiciona um Cliente"
+      description: ""
+      operationId: "addByID"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id do Cliente a ser adicionado"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "nome"
+        in: "formData"
+        description: "Updated name of the pet"
+        required: true
+        type: "string"
+      responses:
+        "405":
+          description: "Invalid input"
+        "200":
+          description: "Operação bem sucedida"
+      
